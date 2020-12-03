@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\FrameGuard;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +22,10 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('/login',[AdminController::class,"LoginPage"]);
+Route::post('/login',[AdminController::class,"LoginPage"]);
+Route::resource('game',GameController::class);
+Route::get('/testAdmin',function()
+{
+	return view('Admin.AdminPage');
+});

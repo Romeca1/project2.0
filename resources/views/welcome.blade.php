@@ -16,31 +16,60 @@
 
         <style>
             body {
-                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                font-family: Verdana, sans-serif;
                 margin: 0;
+                text-align: center;
+                background-image:linear-gradient(to right,#1B1155,#1B1154);
+            }
+            .header-div{
+                text-align: left;
+                margin-left: 50px;
             }
             .header{
-                text-align: center;
+                font-size: 35px;
+                color:white;
+                font-family: Comic Sans MS, cursive, sans-serif;
+            }
+            #btn1{
+                margin-left: 10px;
+            }
+            #btn2{
+                margin-left:5px;
+            }
+            #btn1,#btn2{
+                color:white;
+            }
+            #btn1:hover , #btn2:hover{
+                border-left:4px solid brown;
+                background-color: orange;
+            }
+            a{
+                padding: 10px 25px;
+                text-decoration: none;
+                color:white;
             }
         </style>
     </head>
     <body class="antialiased">
+        <div class="header-div">
+            <nav>
+                <h1 class="header">RomecaGame</h1>
+            </nav>
+        </div>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+                        <a id="btn1" href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+                        <a id="btn1" href="/login" class="text-sm text-gray-700 underline">Admin login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            <a id="btn2" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
                     @endif
                 </div>
             @endif
-            <div>
-                <h1 class="header">GGaem</h1>
-            </div>
     </body>
 </html>
