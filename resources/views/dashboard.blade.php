@@ -35,24 +35,24 @@
     </style>
 </head>
 <body>
+    
     <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         
         </h2>
     </x-slot>
-    <div class="gameTable">
-        @for($i=1;$i<=10;$i++)
-            @foreach(App\Models\Game::all() as $game)
-                <div class="single-game-div">
-                    <img class="game-icon" src="{{$game->icon}}">
-                    <span>{{$game->name}}</span><br>
-                    <a class="play-btn" href="/game/{{$game->id}}">Play</a>
-                </div>
-            @endforeach
-        @endfor
-    </div>
-</x-app-layout>
-    
+        <div class="gameTable">
+            @for($i=1;$i<=10;$i++)
+                @foreach(App\Models\Game::all() as $game)
+                    <div class="single-game-div">
+                        <img class="game-icon" src="{{$game->icon}}">
+                        <span>{{$game->name}}</span><br>
+                        <a class="play-btn" href="/game/{{$game->id}}">Play</a>
+                    </div>
+                @endforeach
+            @endfor
+        </div>
+    </x-app-layout>
 </body>
 </html>

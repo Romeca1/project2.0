@@ -39,6 +39,10 @@
 			color:#2C7C1F;
 			border-radius: 2px;
 		}
+		.create-btn:hover{
+			background-color: #13790B;
+			color:white;
+		}
 		.info-div{
 			float:left;
 			margin-top: 5%;
@@ -59,27 +63,56 @@
 			margin-right: 50px;
 			margin-left: -150px;
 			background-color: #C70039;
+			border-radius: 5px;
 		}
 		.game-div{
 			background-color: #FF5733;
+			border-radius: 5px;
 		}
-		.div{
+		a:hover .user-div{
+			background-color:#FF5733; 
+		}
+		a:hover .game-div{
+			background-color:#C70039; 
+		}
+		.div1{
 			margin-top: 250px;
 			margin-left: 400px;
 			background-color: #333;
-			padding-left:50px;
-			padding: 10px;
+			padding: 0px;
+			margin-right: 20px;  
+		}
+		.div2{
+			margin-top: 350px;
+			margin-left: 400px;
+			background-color: #333;
+			padding: 0px;
 			margin-right: 20px;  
 		}
 		img{
 			width: 100px;
 			height: 75px;
 		}
+		.single-game-div{
+			float:left;
+			padding: 10px;
+			margin-right: 40px;
+			border:1px solid black;
+			border-radius: 4px;
+		}
+		.text-div{
+			margin-left: 40%;
+		}
+		p{
+			color:white;
+			font-size: 20px;
+		}
 	</style>
 </head>
 <body>
 	<div class="form-div">
-		<form method="post" action="">
+		<form method="post" action="/game">
+			{{ csrf_field() }}
 			<div>
 				<label for="name">Enter the name of game</label><br>
 				<input type="text" name="name">
@@ -113,30 +146,51 @@
 			</div>
 			<br>
 			<div>
-				<input type="submit" value="GO!" name="btn" class="create-btn">
+				<input type="submit" value="GO!" class="create-btn">
 			</div>
 		</form>
 	</div>
 
 	<div class="info-div">
-		<div class="user-div">
-			<span>registered user:</span><br>
-			<span>10000000</span>
-		</div>
-		<div class="game-div">
-			<span>game in site:</span><br>
-			<span>10000000</span>
-		</div>
+		<a href="/testAdmin/users">
+			<div class="user-div">
+				<span>registered users:</span><br>
+				<span>10000000</span>
+			</div>
+		</a>
+		<a href="/testAdmin/games">
+			<div class="game-div">
+				<span>games in site:</span><br>
+				<span>10000000</span>
+			</div>
+		</a>
 	</div>
-	<br>
-	<div class="div">
+	<br>	
+	<div class="div1">
+		<div class="text-div">
+			<p>Top 5 likes game!</p>
+		</div>
+		@for($i=1;$i<=5;$i++)
 		@foreach(App\Models\Game::all() as $game)
             <div class="single-game-div">
                 <img class="game-icon" src="{{$game->icon}}">
                 <p>{{$game->name}}</p>
-                
             </div>
         @endforeach
+        @endfor
+	</div>
+	<div class="div2">
+		<div class="text-div">
+			<p>Top 5 likes game!</p>
+		</div>
+		@for($i=1;$i<=5;$i++)
+		@foreach(App\Models\Game::all() as $game)
+            <div class="single-game-div">
+                <img class="game-icon" src="{{$game->icon}}">
+                <p>{{$game->name}}</p>
+            </div>
+        @endforeach
+        @endfor
 	</div>
 </body>
 </html>

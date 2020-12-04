@@ -25,7 +25,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/login',[AdminController::class,"LoginPage"]);
 Route::post('/login',[AdminController::class,"LoginPage"]);
 Route::resource('game',GameController::class);
-Route::get('/testAdmin',function()
+Route::get('/testHome',function()
 {
-	return view('Admin.AdminPage');
+	return view('dashboard');
 });
+Route::get('/testAdmin',[AdminController::class,"AdminPage"]);
+Route::get('/testAdmin/users',[AdminController::class,"UsersTable"]);
+Route::get('/testAdmin/games',[AdminController::class,'GamesTable']);

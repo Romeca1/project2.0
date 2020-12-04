@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\GameRequest;
 use App\Models\Game;
 class GameController extends Controller
 {
@@ -21,10 +22,7 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    public function create(){}
 
     /**
      * Store a newly created resource in storage.
@@ -32,9 +30,18 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GameRequest $request)
     {
-        //
+
+        Game::create([
+            "name" => $request['name'],
+            "link" => $request['link'],
+            "icon" => $request['icon'],
+            "category" => $request['category'],
+            "description" => $request['description'],
+            "instruction" => $request['instruction']
+        ]);
+        return redirect('/testAdmin');
     }
 
     /**
@@ -78,8 +85,5 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    public function destroy($id){}
 }
